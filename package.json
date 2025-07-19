@@ -1,16 +1,35 @@
 {
   "name": "simple-chat-app-100xengineers",
-  "version": "1.0.0",
-  "description": "A basic chat application using Node.js and Socket.io. The app allows users to connect to a common chat  and exchange messages in real time, enabling seamless communication between multiple users.",
-  "main": "app.js",
+  "version": "2.0.0",
+  "description": "A secure, modular real-time chat application using Node.js and Socket.io with multiple rooms, user authentication, and message persistence.",
+  "main": "src/server/app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node src/server/app.js",
+    "dev": "nodemon src/server/app.js",
+    "test": "jest",
+    "lint": "eslint src/",
+    "build": "webpack --mode production"
   },
-  "keywords": [],
+  "keywords": ["chat", "socket.io", "real-time", "messaging"],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
-    "socket.io": "^4.7.2"
+    "socket.io": "^4.7.2",
+    "helmet": "^7.0.0",
+    "express-rate-limit": "^6.8.1",
+    "express-validator": "^7.0.1",
+    "dompurify": "^3.0.3",
+    "jsdom": "^22.1.0",
+    "cors": "^2.8.5",
+    "compression": "^1.7.4",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "jest": "^29.5.0",
+    "eslint": "^8.44.0",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4"
   }
 }
