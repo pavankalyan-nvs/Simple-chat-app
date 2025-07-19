@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Chat App</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header class="chat-header">
+      <h1>Simple Chat App</h1>
+      <div id="connection-status" class="connection-status">
+        <span class="status-indicator" id="status-indicator"></span>
+        <span id="status-text">Connecting...</span>
+      </div>
+      <div id="online-users" class="online-users">
+        <span class="users-label">Online Users (0):</span>
+        <ul id="users-list" class="users-list"></ul>
+      </div>
+    </header>
+
+    <!-- Main Chat Area -->
+    <main class="chat-container">
+      <!-- Room Info -->
+      <div id="room-info" class="room-info">
+        <span id="current-room">general</span>
+        <button id="room-menu-btn" class="room-menu-btn">⚙️</button>
+      </div>
+
+      <!-- Messages Container -->
+      <div id="messages-container" class="messages-container">
+        <ul id="messages" class="messages-list"></ul>
+      </div>
+
+      <!-- Chat Input -->
+      <div class="chat-input-container">
+        <form id="chat-form" class="chat-form">
+          <div class="input-group">
+            <input 
+              id="name-input" 
+              type="text" 
+              placeholder="Enter your username" 
+              autocomplete="off" 
+              required 
+              maxlength="30"
+              class="name-input"
+            />
+            <input 
+              id="message-input" 
+              type="text" 
+              placeholder="Type your message..." 
+              autocomplete="off" 
+              required 
+              maxlength="500"
+              class="message-input"
+              disabled
+            />
+            <button id="send-button" type="submit" class="send-button" disabled>
+              Send
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- Error Toast -->
+    <div id="error-toast" class="toast error-toast hidden">
+      <span id="error-message"></span>
+      <button id="close-error" class="close-toast">×</button>
+    </div>
+
+    <!-- Success Toast -->
+    <div id="success-toast" class="toast success-toast hidden">
+      <span id="success-message"></span>
+      <button id="close-success" class="close-toast">×</button>
+    </div>
+
+    <!-- Room Modal -->
+    <div id="room-modal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Room Options</h3>
+          <button id="close-modal" class="close-modal">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="room-option">
+            <label for="new-room-input">Join/Create Room:</label>
+            <input id="new-room-input" type="text" placeholder="Room name" maxlength="50">
+            <button id="join-room-btn">Join</button>
+          </div>
+          <div class="room-list">
+            <h4>Available Rooms:</h4>
+            <ul id="available-rooms">
+              <li><button class="room-btn" data-room="general">general</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loading" class="loading hidden">
+      <div class="spinner"></div>
+      <span>Loading...</span>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+    integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+    crossorigin="anonymous"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/socketClient.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
